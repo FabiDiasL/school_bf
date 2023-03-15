@@ -25,9 +25,10 @@ public class CrudProfessorService {
 			
 			System.out.println("Qual ação deseja realizar?");
 			System.out.println("0 - Voltar ao menu anterior");
-			System.out.println("1 - Cadastrar novo Professor");
-			System.out.println("2 - Atualizar um Professor");
-			System.out.println("3 - Excluir um Professor");
+			System.out.println("1 - Cadastrar novo(a) Professor(a)");
+			System.out.println("2 - Atualizar um(a) Professor(a)");
+			System.out.println("3 - Listar todos os Professores");
+			System.out.println("4 - Excluir um(a) Professor(a)");
 			
 			int opcao = sc.nextInt();
 			
@@ -39,6 +40,9 @@ public class CrudProfessorService {
 				this.atualizar(sc);
 				break;
 			case 3:
+				this.listar();
+				break;
+			case 4:
 				this.excluir(sc);
 				break;
 			default:
@@ -50,19 +54,19 @@ public class CrudProfessorService {
 	}
 
 	private void cadastrar(Scanner sc) {
-		System.out.println("Digite o nome do professor:");
+		System.out.println("Digite o nome do(a) professor(a):");
 		String nome = sc.next();
 		
-		System.out.println("Digite a matrícula do professor:");
+		System.out.println("Digite a matrícula do(a) professor(a):");
 		String matricula = sc.next();
 		
 		Professor professor = new Professor(nome, matricula);
 		this.professorRepository.save(professor);
-		System.out.println("Professor salvo com sucesso!\n");	
+		System.out.println("Professor(a) salvo(a) com sucesso!\n");	
 	}
 	
 	private void atualizar(Scanner sc) {
-		System.out.println("Digite o id do professor que deseja atualizar:");
+		System.out.println("Digite o id do(a) professor(a) que deseja atualizar:");
 		Long id = sc.nextLong();
 		
 		//esta classe Optional guarda um obj do tipo Professor e se não houver um obj nesta busca ela terá um null.
@@ -71,10 +75,10 @@ public class CrudProfessorService {
 		//se o hibernate conseguir acha um registro na tabela professores com o id passado pelo usuário.
 		if(optional.isPresent()) {
 						
-			System.out.println("Digite o nome do professor:");
+			System.out.println("Digite o nome do(a) professor(a):");
 			String nome = sc.next();
 			
-			System.out.println("Digite a matrícula do professor:");
+			System.out.println("Digite a matrícula do(a) professor(a):");
 			String matricula = sc.next();
 			
 			Professor professor = optional.get();
@@ -82,23 +86,35 @@ public class CrudProfessorService {
 			professor.setMatricula(matricula);
 			this.professorRepository.save(professor); // atualiza o registro no BD.
 			
-			System.out.println("Professor atualizado com sucesso!\n");		
+			System.out.println("Professor(a) atualizado(a) com sucesso!\n");		
 		}else {
 			System.out.println("O id " + id + " é inválido!\n");
 		}			
 	}
 	
+	private void listar() {
+			
+		Iterable<Professor>	professores = this.professorRepository.findAll();
+		
+		for(Professor professor : professores) {
+			System.out.println(professor);
+		}
+		System.out.println();
+	}
+	
 	private void excluir(Scanner sc) {
-		System.out.println("Digite o id do professor que deseja atualizar:");
+		System.out.println("Digite o id do(a) professor(a) que deseja excluir:");
 		Long id = sc.nextLong();
 		
 		Optional<Professor> optional = this.professorRepository.findById(id);
 		
 		if(optional.isPresent()) {
 			Professor professor = optional.get();
-			this.professorRepository.deleteById(id);
+		
+			this.professorRepository.deleteById(id);				
+						
+			System.out.println("Professor(a) excluído(a) com sucesso!\n");
 			
-			System.out.println("Professor excluído com sucesso!\n");			
 		}else {
 			System.out.println("O id " + id + " é inválido!\n");
 		}		
