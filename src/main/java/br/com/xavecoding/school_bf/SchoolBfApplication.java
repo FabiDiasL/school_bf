@@ -1,17 +1,21 @@
 package br.com.xavecoding.school_bf;
 
+import java.util.Scanner;
+
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import br.com.xavecoding.school_bf.orm.Professor;
-import br.com.xavecoding.school_bf.repositorio.ProfessorRepositorio;
-import org.springframework.boot.CommandLineRunner;
+
+import br.com.xavecoding.school_bf.service.CrudProfessorService;
 
 @SpringBootApplication
 public class SchoolBfApplication implements CommandLineRunner{	
-	private ProfessorRepositorio repositorio;
+	private CrudProfessorService professorService;
 	
-	public SchoolBfApplication(ProfessorRepositorio repositorio) {
-		this.repositorio = repositorio;
+	//os objetos passados por parâmetro são injetados pelo Spring, automaticamente.
+	//pq suas classes possuem a anotação @service.
+	public SchoolBfApplication(CrudProfessorService professorService) {
+		this.professorService = professorService;
 	}
 
 	public static void main(String[] args) {
@@ -19,15 +23,25 @@ public class SchoolBfApplication implements CommandLineRunner{
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
-		Professor professor = new Professor("Melo", "abcd");
+	public void run(String... args) throws Exception {		
+		Boolean isTrue = true;
+		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Professor antes do save");
-		System.out.println(professor);
-		
-		this.repositorio.save(professor);
-		
-		System.out.println("Professor depois do save");
-		System.out.println(professor);
+		while(isTrue) {
+			System.out.println("Com qual entidade deseja interagir?");
+			System.out.println("0 - Sair");
+			System.out.println("1 - Professor");
+			
+			int opcao = sc.nextInt();
+			
+			switch(opcao) {
+			case 1:
+				this.professorService.menu(sc);
+				break;
+			default:
+				isTrue = false;
+				break;
+			}
+		}
 	}
 }
