@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import br.com.xavecoding.school_bf.orm.Professor;
 
 @Repository
-public interface ProfessorRepository extends CrudRepository<Professor, Long>{
+public interface ProfessorRepository extends CrudRepository<Professor, Long> {
 
 }

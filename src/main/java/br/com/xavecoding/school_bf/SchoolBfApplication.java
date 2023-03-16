@@ -9,11 +9,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import br.com.xavecoding.school_bf.service.CrudProfessorService;
 
 @SpringBootApplication
-public class SchoolBfApplication implements CommandLineRunner{	
+public class SchoolBfApplication implements CommandLineRunner {
 	private CrudProfessorService professorService;
-	
-	//os objetos passados por parâmetro são injetados pelo Spring, automaticamente.
-	//pq suas classes possuem a anotação @service.
+
+	// os objetos passados por parâmetro são injetados pelo Spring, automaticamente.
+	// pq suas classes possuem a anotação @service.
 	public SchoolBfApplication(CrudProfessorService professorService) {
 		this.professorService = professorService;
 	}
@@ -23,18 +23,18 @@ public class SchoolBfApplication implements CommandLineRunner{
 	}
 
 	@Override
-	public void run(String... args) throws Exception {		
+	public void run(String... args) throws Exception {
 		Boolean isTrue = true;
 		Scanner sc = new Scanner(System.in);
-		
-		while(isTrue) {
+
+		while (isTrue) {
 			System.out.println("Com qual entidade deseja interagir?");
 			System.out.println("0 - Sair");
 			System.out.println("1 - Professor");
-			
+
 			int opcao = sc.nextInt();
-			
-			switch(opcao) {
+
+			switch (opcao) {
 			case 1:
 				this.professorService.menu(sc);
 				break;
