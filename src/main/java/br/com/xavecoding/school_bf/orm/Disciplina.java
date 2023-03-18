@@ -24,7 +24,6 @@ public class Disciplina {
 	@JoinColumn(name = "professor_id", nullable = true)
 	private Professor professor;
 
-	@Deprecated
 	public Disciplina() {
 	}
 
