@@ -79,7 +79,8 @@ public class CrudProfessorService {
 		if (optional.isPresent()) {
 
 			System.out.println("Digite o nome do(a) professor(a):");
-			String nome = sc.next();
+			sc.nextLine();
+			String nome = sc.nextLine();
 
 			System.out.println("Digite a matrícula do(a) professor(a):");
 			String matricula = sc.next();
