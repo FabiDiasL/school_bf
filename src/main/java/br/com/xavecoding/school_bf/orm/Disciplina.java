@@ -24,12 +24,14 @@ public class Disciplina {
 	@JoinColumn(name = "professor_id", nullable = true)
 	private Professor professor;
 
+	@Deprecated
 	public Disciplina() {
 	}
 
-	public Disciplina(String nome, String ementa) {
+	public Disciplina(String nome, String ementa, Professor professor) {
 		this.nome = nome;
 		this.ementa = ementa;
+		this.professor = professor;
 	}
 
 	public Long getId() {
@@ -52,8 +54,16 @@ public class Disciplina {
 		this.ementa = ementa;
 	}
 
+	public Professor getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
 	@Override
 	public String toString() {
-		return "Disciplina [id=" + id + ", nome=" + nome + ", ementa=" + ementa + "]";
+		return "Disciplina [id=" + id + ", nome=" + nome + ", ementa=" + ementa + ", professor=" + professor + "]";
 	}
 }
