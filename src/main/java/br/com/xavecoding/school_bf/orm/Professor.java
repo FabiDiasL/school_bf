@@ -54,6 +54,14 @@ public class Professor {
 		this.matricula = matricula;
 	}
 
+	public List<Disciplina> getDisciplinas() {
+		return disciplinas;
+	}
+
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
+	}
+
 	@Override
 	public String toString() {
 		return "Professor [id=" + id + ", nome=" + nome + ", matricula=" + matricula + "]";

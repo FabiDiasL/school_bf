@@ -30,6 +30,7 @@ public class CrudProfessorService {
 			System.out.println("2 - Atualizar um(a) Professor(a)");
 			System.out.println("3 - Listar todos os Professores");
 			System.out.println("4 - Excluir um(a) Professor(a)");
+			System.out.println("5 - Visualizar informações de um(a) Professor(a)");
 
 			int opcao = sc.nextInt();
 
@@ -45,6 +46,9 @@ public class CrudProfessorService {
 				break;
 			case 4:
 				this.excluir(sc);
+				break;
+			case 5:
+				this.visualizarProfessor(sc);
 				break;
 			default:
 				isTrue = false;
@@ -123,4 +127,30 @@ public class CrudProfessorService {
 			System.out.println("O id " + id + " é inválido!\n");
 		}
 	}
+	
+	private void visualizarProfessor(Scanner sc) {
+		System.out.println("Digite o id do(a) professor(a) que deseja informações:");
+		Long id = sc.nextLong();
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
