@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.xavecoding.school_bf.orm.Disciplina;
 import br.com.xavecoding.school_bf.orm.Professor;
 import br.com.xavecoding.school_bf.repository.ProfessorRepository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class CrudProfessorService {
@@ -20,6 +21,7 @@ public class CrudProfessorService {
 		this.professorRepository = professorRepository;
 	}
 
+	//@Transactional  //Esta anotação descreve um atributo de transação em um método individual ou em uma classe, para fazer transações com o BD (p/ @OneToMany). 
 	public void menu(Scanner sc) {
 		Boolean isTrue = true;
 
@@ -129,6 +131,7 @@ public class CrudProfessorService {
 		}
 	}
 	
+	//@Transactional
 	private void visualizarProfessor(Scanner sc) {
 		System.out.println("Digite o id do(a) professor(a) que deseja informações:");
 		Long id = sc.nextLong();

@@ -75,7 +75,7 @@ public class CrudDisciplinaService {
 			Disciplina disciplina = new Disciplina(nome, ementa, professor);
 			disciplinaRepository.save(disciplina);
 
-			System.out.println("Disciplina salva com sucesso!");
+			System.out.println("Disciplina salva com sucesso!\n");
 		} else {
 			System.out.println("O ID " + professorId + " é inválido.");
 		}
