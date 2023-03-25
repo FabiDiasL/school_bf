@@ -63,9 +63,10 @@ public class Professor {
 		this.disciplinas = disciplinas;
 	}
 	
-	@PreRemove
-	public void atualizaDisciplinasOnDelete() {
-		System.out.println("****** atualizaDisciplinasOnDelete");
+	// Ação de ON REMOVE SET NULL.
+	@PreRemove 
+	public void atualizaDisciplinasOnRemove() {
+		System.out.println("****** atualizaDisciplinasOnRemove ******");
 		for (Disciplina disciplina : this.getDisciplinas()) {
 			disciplina.setProfessor(null);
 		}
