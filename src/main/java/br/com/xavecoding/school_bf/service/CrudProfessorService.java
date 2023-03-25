@@ -21,7 +21,7 @@ public class CrudProfessorService {
 		this.professorRepository = professorRepository;
 	}
 
-	//@Transactional  //Esta anotação descreve um atributo de transação em um método individual ou em uma classe, para fazer transações com o BD (p/ @OneToMany). 
+	@Transactional  //Esta anotação descreve um atributo de transação em um método individual ou em uma classe, para fazer transações com o BD (p/ @OneToMany). 
 	public void menu(Scanner sc) {
 		Boolean isTrue = true;
 
@@ -131,7 +131,7 @@ public class CrudProfessorService {
 		}
 	}
 	
-	//@Transactional
+	@Transactional
 	private void visualizarProfessor(Scanner sc) {
 		System.out.println("Digite o id do(a) professor(a) que deseja informações:");
 		Long id = sc.nextLong();

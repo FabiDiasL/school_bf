@@ -4,11 +4,11 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PreRemove;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,7 +23,7 @@ public class Professor {
 	@Column(nullable = false, unique = true)
 	private String matricula;
 	
-	@OneToMany(mappedBy = "professor", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "professor")
 	private List<Disciplina> disciplinas;
 	
 	@Deprecated
@@ -61,6 +61,14 @@ public class Professor {
 
 	public void setDisciplinas(List<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
+	}
+	
+	@PreRemove
+	public void atualizaDisciplinasOnDelete() {
+		System.out.println("****** atualizaDisciplinasOnDelete");
+		for (Disciplina disciplina : this.getDisciplinas()) {
+			disciplina.setProfessor(null);
+		}
 	}
 
 	@Override
