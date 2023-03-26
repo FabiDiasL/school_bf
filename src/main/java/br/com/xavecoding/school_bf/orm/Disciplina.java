@@ -1,11 +1,16 @@
 package br.com.xavecoding.school_bf.orm;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumns;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -23,6 +28,11 @@ public class Disciplina {
 	@ManyToOne()
 	@JoinColumn(name = "professor_id", nullable = true)
 	private Professor professor;
+	
+	@ManyToMany
+	@JoinTable(name = "disciplinas_alunos", joinColumns = @JoinColumn(name = "disciplina_fk"), 
+	inverseJoinColumns = @JoinColumn(name = "aluno_fk"))
+	List<Aluno> alunos;
 
 	@Deprecated
 	public Disciplina() {
