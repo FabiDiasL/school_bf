@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
@@ -20,13 +19,14 @@ public class Aluno {
 	@Column(nullable = false)
 	private String nome;
 	private Integer idade;
-	
+
 	@ManyToMany(mappedBy = "alunos")
 	List<Disciplina> disciplinas;
 
 	@Deprecated
-	public Aluno () {}
-	
+	public Aluno() {
+	}
+
 	public Aluno(String nome, Integer idade, List<Disciplina> disciplinas) {
 		this.nome = nome;
 		this.idade = idade;
@@ -64,5 +64,5 @@ public class Aluno {
 	@Override
 	public String toString() {
 		return "Aluno [id = " + id + ", nome = " + nome + ", idade = " + idade + ", disciplinas = " + disciplinas + "]";
-	}		
+	}
 }
