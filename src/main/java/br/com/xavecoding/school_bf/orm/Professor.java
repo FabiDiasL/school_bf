@@ -22,10 +22,10 @@ public class Professor {
 	private String nome;
 	@Column(nullable = false, unique = true)
 	private String matricula;
-	
+
 	@OneToMany(mappedBy = "professor")
 	private List<Disciplina> disciplinas;
-	
+
 	@Deprecated
 	public Professor() {
 	}
@@ -62,9 +62,9 @@ public class Professor {
 	public void setDisciplinas(List<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
 	}
-	
+
 	// Ação de ON REMOVE SET NULL.
-	@PreRemove 
+	@PreRemove
 	public void atualizaDisciplinasOnRemove() {
 		System.out.println("****** atualizaDisciplinasOnRemove ******");
 		for (Disciplina disciplina : this.getDisciplinas()) {

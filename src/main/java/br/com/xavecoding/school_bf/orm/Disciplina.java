@@ -4,6 +4,7 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,9 +29,9 @@ public class Disciplina {
 	@JoinColumn(name = "professor_id", nullable = true)
 	private Professor professor;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "disciplinas_alunos", joinColumns = @JoinColumn(name = "disciplina_fk"), inverseJoinColumns = @JoinColumn(name = "aluno_fk"))
-	List<Aluno> alunos;
+	private List<Aluno> alunos;
 
 	@Deprecated
 	public Disciplina() {
@@ -72,6 +73,10 @@ public class Disciplina {
 
 	@Override
 	public String toString() {
-		return "Disciplina [id=" + id + ", nome=" + nome + ", ementa=" + ementa + ", professor=" + professor + "]";
+		return "Disciplina [id=" + id 
+				+ ", nome=" + nome 
+				+ ", ementa=" + ementa 
+				+ ", professor=" + professor 
+				+ ", alunos=" + alunos + "]";
 	}
 }

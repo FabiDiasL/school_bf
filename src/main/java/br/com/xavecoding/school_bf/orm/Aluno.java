@@ -23,7 +23,6 @@ public class Aluno {
 	@ManyToMany(mappedBy = "alunos")
 	List<Disciplina> disciplinas;
 
-	@Deprecated
 	public Aluno() {
 	}
 
@@ -35,6 +34,10 @@ public class Aluno {
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -63,6 +66,6 @@ public class Aluno {
 
 	@Override
 	public String toString() {
-		return "Aluno [id = " + id + ", nome = " + nome + ", idade = " + idade + ", disciplinas = " + disciplinas + "]";
+		return "Aluno [id = " + id + ", nome = " + nome + ", idade = " + idade + "]";
 	}
 }
