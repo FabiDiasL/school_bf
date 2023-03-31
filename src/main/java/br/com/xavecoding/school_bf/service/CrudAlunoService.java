@@ -61,7 +61,8 @@ public class CrudAlunoService {
 
 	private void cadastrar(Scanner sc) {
 		System.out.println("Digite o nome do(a) aluno(a):");
-		String nome = sc.next();
+		sc.nextLine();
+		String nome = sc.nextLine();
 
 		System.out.println("Digite a idade do(a) aluno(a):");
 		Integer idade = sc.nextInt();
