@@ -25,7 +25,7 @@ public class Aluno {
 
 	public Aluno() {
 	}
-	
+
 	public Aluno(String nome, Integer idade) {
 		this.nome = nome;
 		this.idade = idade;

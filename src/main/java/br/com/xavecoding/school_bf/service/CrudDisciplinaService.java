@@ -20,7 +20,8 @@ public class CrudDisciplinaService {
 	private ProfessorRepository professorRepository;
 	private AlunoRepository alunoRepository;
 
-	public CrudDisciplinaService(DisciplinaRepository disciplinaRepository, ProfessorRepository professorRepository, AlunoRepository alunoRepository) {
+	public CrudDisciplinaService(DisciplinaRepository disciplinaRepository, ProfessorRepository professorRepository,
+			AlunoRepository alunoRepository) {
 		this.disciplinaRepository = disciplinaRepository;
 		this.professorRepository = professorRepository;
 		this.alunoRepository = alunoRepository;
@@ -80,7 +81,7 @@ public class CrudDisciplinaService {
 		if (optional.isPresent()) {
 
 			Professor professor = optional.get();
-			
+
 			List<Aluno> alunos = this.matricular(sc);
 
 			Disciplina disciplina = new Disciplina(nome, ementa, professor);
@@ -120,14 +121,14 @@ public class CrudDisciplinaService {
 
 			if (optionalProfessor.isPresent()) {
 				Professor professor = optionalProfessor.get();
-				
+
 				List<Aluno> alunos = this.matricular(sc);
 
 				disciplina.setNome(nome);
 				disciplina.setEmenta(ementa);
 				disciplina.setProfessor(professor);
 				disciplina.setAlunos(alunos);
-				
+
 				this.disciplinaRepository.save(disciplina); // atualiza o registro no BD.
 
 				System.out.println("Disciplina atualizada com sucesso!\n");
@@ -167,7 +168,7 @@ public class CrudDisciplinaService {
 			System.out.println("O id " + id + " é inválido!\n");
 		}
 	}
-	
+
 	private List<Aluno> matricular(Scanner sc) {
 		Boolean isTrue = true;
 		List<Aluno> alunos = new ArrayList<Aluno>();
@@ -198,10 +199,10 @@ public class CrudDisciplinaService {
 		Optional<Disciplina> optionalDisciplina = this.disciplinaRepository.findById(id);
 
 		if (optionalDisciplina.isPresent()) {
-			
+
 			Disciplina disciplina = optionalDisciplina.get();
 			List<Aluno> novosAlunos = this.matricular(sc);
-			disciplina.getAlunos().addAll(novosAlunos);			
+			disciplina.getAlunos().addAll(novosAlunos);
 			this.disciplinaRepository.save(disciplina);
 		} else {
 			System.out.println("O id " + id + " é inválido!\n");

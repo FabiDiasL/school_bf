@@ -21,7 +21,8 @@ public class CrudProfessorService {
 		this.professorRepository = professorRepository;
 	}
 
-	@Transactional  //Esta anotação descreve um atributo de transação em um método individual ou em uma classe, para fazer transações com o BD (p/ @OneToMany). 
+	@Transactional // Esta anotação descreve um atributo de transação em um método individual ou em
+					// uma classe, para fazer transações com o BD (p/ @OneToMany).
 	public void menu(Scanner sc) {
 		Boolean isTrue = true;
 
@@ -131,31 +132,31 @@ public class CrudProfessorService {
 			System.out.println("O id " + id + " é inválido!\n");
 		}
 	}
-	
+
 	@Transactional
 	private void visualizarProfessor(Scanner sc) {
 		System.out.println("Digite o id do(a) professor(a) que deseja informações:");
 		Long id = sc.nextLong();
-		
+
 		Optional<Professor> optional = this.professorRepository.findById(id);
-		
+
 		if (optional.isPresent()) {
 			Professor professor = optional.get();
-			
+
 			System.out.println("Professor: {" + professor.getNome());
 			System.out.println("ID: " + professor.getId());
 			System.out.println("Matrícula: " + professor.getMatricula());
 			System.out.println("Disciplinas: [");
-			
-			for(Disciplina disciplina: professor.getDisciplinas()) {
+
+			for (Disciplina disciplina : professor.getDisciplinas()) {
 				System.out.println("ID da disciplina: " + disciplina.getId());
 				System.out.println("Nome da disciplina: " + disciplina.getNome());
 				System.out.println("Ementa da disciplina: " + disciplina.getEmenta());
 				System.out.println();
 			}
-			System.out.println("]\n}");			
+			System.out.println("]\n}");
 		} else {
 			System.out.println("O id " + id + " é inválido!\n");
 		}
-	}	
+	}
 }
