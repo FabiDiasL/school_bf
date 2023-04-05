@@ -85,10 +85,7 @@ public class Disciplina {
 
 	@Override
 	public String toString() {
-		return "Disciplina [id=" + id 
-				+ ", nome=" + nome 
-				+ ", ementa=" + ementa 
-				+ ", professor=" + professor 
+		return "Disciplina [id=" + id + ", nome=" + nome + ", ementa=" + ementa + ", professor=" + professor
 				+ ", alunos=" + alunos + "]";
 	}
 }
