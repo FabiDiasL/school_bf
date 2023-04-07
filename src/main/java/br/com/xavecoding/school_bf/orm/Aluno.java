@@ -1,6 +1,6 @@
 package br.com.xavecoding.school_bf.orm;
 
-import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +21,7 @@ public class Aluno {
 	private Integer idade;
 
 	@ManyToMany(mappedBy = "alunos")
-	List<Disciplina> disciplinas;
+	private Set<Disciplina> disciplinas; //um conjunto em java não permite repetição do mesmo elemento, diferente de uma lista.
 
 	public Aluno() {
 	}
@@ -31,7 +31,7 @@ public class Aluno {
 		this.idade = idade;
 	}
 
-	public Aluno(String nome, Integer idade, List<Disciplina> disciplinas) {
+	public Aluno(String nome, Integer idade, Set<Disciplina> disciplinas) {
 		this.nome = nome;
 		this.idade = idade;
 		this.disciplinas = disciplinas;
@@ -61,11 +61,11 @@ public class Aluno {
 		this.idade = idade;
 	}
 
-	public List<Disciplina> getDisciplinas() {
+	public Set<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
 
-	public void setDisciplinas(List<Disciplina> disciplinas) {
+	public void setDisciplinas(Set<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
 	}
 

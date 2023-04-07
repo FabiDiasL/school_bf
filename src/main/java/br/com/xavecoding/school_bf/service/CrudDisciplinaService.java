@@ -1,9 +1,9 @@
 package br.com.xavecoding.school_bf.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
@@ -82,7 +82,7 @@ public class CrudDisciplinaService {
 
 			Professor professor = optional.get();
 
-			List<Aluno> alunos = this.matricular(sc);
+			Set<Aluno> alunos = this.matricular(sc);
 
 			Disciplina disciplina = new Disciplina(nome, ementa, professor);
 			disciplina.setAlunos(alunos);
@@ -122,7 +122,7 @@ public class CrudDisciplinaService {
 			if (optionalProfessor.isPresent()) {
 				Professor professor = optionalProfessor.get();
 
-				List<Aluno> alunos = this.matricular(sc);
+				Set<Aluno> alunos = this.matricular(sc);
 
 				disciplina.setNome(nome);
 				disciplina.setEmenta(ementa);
@@ -169,9 +169,9 @@ public class CrudDisciplinaService {
 		}
 	}
 
-	private List<Aluno> matricular(Scanner sc) {
+	private Set<Aluno> matricular(Scanner sc) {
 		Boolean isTrue = true;
-		List<Aluno> alunos = new ArrayList<Aluno>();
+		Set<Aluno> alunos = new HashSet<>();
 
 		while (isTrue) {
 			System.out.println("Digite o ID do aluno a ser matriculado (digite 0 para sair): ");
@@ -201,7 +201,7 @@ public class CrudDisciplinaService {
 		if (optionalDisciplina.isPresent()) {
 
 			Disciplina disciplina = optionalDisciplina.get();
-			List<Aluno> novosAlunos = this.matricular(sc);
+			Set<Aluno> novosAlunos = this.matricular(sc);
 			disciplina.getAlunos().addAll(novosAlunos);
 			this.disciplinaRepository.save(disciplina);
 		} else {

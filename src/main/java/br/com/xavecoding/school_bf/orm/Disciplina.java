@@ -1,6 +1,6 @@
 package br.com.xavecoding.school_bf.orm;
 
-import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,7 +31,7 @@ public class Disciplina {
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "disciplinas_alunos", joinColumns = @JoinColumn(name = "disciplina_fk"), inverseJoinColumns = @JoinColumn(name = "aluno_fk"))
-	private List<Aluno> alunos;
+	private Set<Aluno> alunos;
 
 	@Deprecated
 	public Disciplina() {
@@ -71,11 +71,11 @@ public class Disciplina {
 		this.professor = professor;
 	}
 
-	public List<Aluno> getAlunos() {
+	public Set<Aluno> getAlunos() {
 		return alunos;
 	}
 
-	public void setAlunos(List<Aluno> alunos) {
+	public void setAlunos(Set<Aluno> alunos) {
 		this.alunos = alunos;
 	}
 
