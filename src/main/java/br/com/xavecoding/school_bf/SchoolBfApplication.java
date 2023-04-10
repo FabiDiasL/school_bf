@@ -9,19 +9,22 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import br.com.xavecoding.school_bf.service.CrudAlunoService;
 import br.com.xavecoding.school_bf.service.CrudDisciplinaService;
 import br.com.xavecoding.school_bf.service.CrudProfessorService;
+import br.com.xavecoding.school_bf.service.RelatorioService;
 
 @SpringBootApplication
 public class SchoolBfApplication implements CommandLineRunner {
 	private CrudProfessorService professorService;
 	private CrudDisciplinaService disciplinaService;
 	private CrudAlunoService alunoService;
+	private RelatorioService relatorioService;
 
 	// os objetos passados por parâmetro são injetados pelo Spring, automaticamente.
 	// pq suas classes possuem a anotação @service.
-	public SchoolBfApplication(CrudProfessorService professorService, CrudDisciplinaService disciplinaService, CrudAlunoService alunoService) {
+	public SchoolBfApplication(CrudProfessorService professorService, CrudDisciplinaService disciplinaService, CrudAlunoService alunoService, RelatorioService relatorioService) {
 		this.professorService = professorService;
 		this.disciplinaService = disciplinaService;
 		this.alunoService = alunoService;
+		this.relatorioService = relatorioService;
 	}
 
 	public static void main(String[] args) {
@@ -39,6 +42,7 @@ public class SchoolBfApplication implements CommandLineRunner {
 			System.out.println("1 - Professor");
 			System.out.println("2 - Disciplina");
 			System.out.println("3 - Aluno");
+			System.out.println("4 - Relatório");
 
 			int opcao = sc.nextInt();
 
@@ -52,6 +56,9 @@ public class SchoolBfApplication implements CommandLineRunner {
 			case 3:
 				this.alunoService.menu(sc);
 				break;
+			case 4:
+				this.relatorioService.menu(sc);
+				break;
 			default:
 				isTrue = false;
 				break;
@@ -59,3 +66,5 @@ public class SchoolBfApplication implements CommandLineRunner {
 		}
 	}
 }
+
+// 10 
