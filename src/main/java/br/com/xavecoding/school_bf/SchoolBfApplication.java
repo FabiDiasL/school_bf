@@ -66,5 +66,3 @@ public class SchoolBfApplication implements CommandLineRunner {
 		}
 	}
 }
-
-// 10 

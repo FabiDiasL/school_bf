@@ -24,12 +24,16 @@ public class RelatorioService {
 			System.out.println("\nQual relatório você deseja?");
 			System.out.println("0 - Voltar ao menu anterior");
 			System.out.println("1 - Gerar relatório de Alunos por um nome");
+			System.out.println("2 - Gerar relatório de Alunos por um nome e uma idade");
 
 			int opcao = sc.nextInt();
 
 			switch (opcao) {
 			case 1:
 				this.alunosPorNome(sc);
+				break;
+			case 2:
+				this.alunosPorNomeEIdade(sc);
 				break;
 			default:
 				isTrue = false;
@@ -44,10 +48,25 @@ public class RelatorioService {
 		sc.nextLine();
 		String nome = sc.nextLine();
 		
-		List<Aluno> alunos = this.alunoRepository.findByNome(nome);
+		List<Aluno> alunos = this.alunoRepository.findByNomeStartingWith(nome);
 		
 		for (Aluno aluno : alunos) {
 			System.out.println(alunos);
 		}
+	}
+	
+	private void alunosPorNomeEIdade(Scanner sc) {
+		System.out.println("Nome: ");
+		sc.nextLine();
+		String nome = sc.nextLine();
+		
+		System.out.println("Idade menor ou igual a: ");
+		Integer idade = sc.nextInt();
+		
+		List<Aluno> alunos = this.alunoRepository.findByNomeStartingWithAndIdadeLessThanEqual(nome, idade);
+		
+		for (Aluno aluno : alunos) {
+			System.out.println(alunos);
+		}		
 	}
 }

@@ -13,6 +13,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "alunos")
 public class Aluno {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -23,6 +24,7 @@ public class Aluno {
 	@ManyToMany(mappedBy = "alunos")
 	private Set<Disciplina> disciplinas; //um conjunto em java não permite repetição do mesmo elemento, diferente de uma lista.
 
+	@Deprecated
 	public Aluno() {
 	}
 
