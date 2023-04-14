@@ -65,7 +65,7 @@ public class CrudAlunoService {
 		String nome = sc.nextLine();
 
 		System.out.println("Digite a idade do(a) aluno(a):");
-		Integer idade = sc.nextInt();
+		int idade = sc.nextInt();
 
 		Aluno aluno = new Aluno(nome, idade);
 		this.alunoRepository.save(aluno);

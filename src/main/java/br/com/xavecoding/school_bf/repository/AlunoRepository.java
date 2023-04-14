@@ -21,7 +21,7 @@ public interface AlunoRepository extends CrudRepository<Aluno, Long> {
 	List<Aluno> findByNomeStartingWithAndIdadeLessThanEqual(String nome, Integer idade);
 
 	// Tipo de busca JPQL
-	@Query("SELECT a FROM Aluno a WHERE a.nome like :nome% AND a.idade :idade >= :idade")
+	@Query("SELECT a FROM Aluno a WHERE a.nome like :nome% AND a.idade >= :idade")
 	List<Aluno> findNomeIdadeIgualOuMaior(String nome, Integer idade);
 
 	// JPQL

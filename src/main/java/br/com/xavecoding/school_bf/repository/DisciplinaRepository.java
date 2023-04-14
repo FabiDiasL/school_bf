@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.xavecoding.school_bf.orm.Disciplina;
 
 @Repository
-public interface DisciplinaRepository extends CrudRepository<Disciplina, Long>{
-	
+public interface DisciplinaRepository extends CrudRepository<Disciplina, Long> {
 
 }

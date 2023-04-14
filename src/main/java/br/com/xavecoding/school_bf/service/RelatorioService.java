@@ -13,7 +13,7 @@ import br.com.xavecoding.school_bf.repository.ProfessorRepository;
 @Service
 public class RelatorioService {
 	private AlunoRepository alunoRepository;
-	private ProfessorRepository professorRepository; 
+	private ProfessorRepository professorRepository;
 
 	public RelatorioService(AlunoRepository alunoRepository, ProfessorRepository professorRepository) {
 		this.alunoRepository = alunoRepository;
@@ -116,7 +116,7 @@ public class RelatorioService {
 
 		alunos.forEach(System.out::println);
 	}
-	
+
 	private void professorAtribuido(Scanner sc) {
 		System.out.println("Nome do(a) professor(a): ");
 		sc.nextLine();

@@ -20,7 +20,8 @@ public class SchoolBfApplication implements CommandLineRunner {
 
 	// os objetos passados por parâmetro são injetados pelo Spring, automaticamente.
 	// pq suas classes possuem a anotação @service.
-	public SchoolBfApplication(CrudProfessorService professorService, CrudDisciplinaService disciplinaService, CrudAlunoService alunoService, RelatorioService relatorioService) {
+	public SchoolBfApplication(CrudProfessorService professorService, CrudDisciplinaService disciplinaService,
+			CrudAlunoService alunoService, RelatorioService relatorioService) {
 		this.professorService = professorService;
 		this.disciplinaService = disciplinaService;
 		this.alunoService = alunoService;

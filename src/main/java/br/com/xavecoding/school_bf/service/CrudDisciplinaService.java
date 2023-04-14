@@ -57,6 +57,7 @@ public class CrudDisciplinaService {
 				break;
 			case 5:
 				this.matricularAlunos(sc);
+				break;
 			default:
 				isTrue = false;
 				break;

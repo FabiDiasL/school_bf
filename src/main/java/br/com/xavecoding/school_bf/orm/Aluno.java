@@ -13,16 +13,18 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "alunos")
 public class Aluno {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(nullable = false)
 	private String nome;
+	@Column(nullable = false)
 	private Integer idade;
 
 	@ManyToMany(mappedBy = "alunos")
-	private Set<Disciplina> disciplinas; //um conjunto em java não permite repetição do mesmo elemento, diferente de uma lista.
+	private Set<Disciplina> disciplinas; // um conjunto em java não permite repetição do mesmo elemento, diferente de
+											// uma lista.
 
 	@Deprecated
 	public Aluno() {
@@ -43,9 +45,9 @@ public class Aluno {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+	//public void setId(Long id) {
+	//	this.id = id;
+	//}
 
 	public String getNome() {
 		return nome;
